@@ -44,4 +44,29 @@ const bookStore = {
 }
 
 // Write your code here!
+function displayBooks(bookStore) {
+    //select the element to change
+    const bookStoreTitle = document.querySelector("#header")
+    //apply the change to match the bookstore name
+    bookStoreTitle.textContent = bookStore.name
+    const bookList = document.querySelector("#book-list")
+    //loop through each book and create elements for each book
+    for (let i = 0; i < bookStore.books.length; i++) {
+        const book = bookStore.books[i]
+    
+        const bookTitle = document.createElement("h3")
+        bookTitle.textContent = book.title
 
+        const bookAuthor = document.createElement("p")
+        bookAuthor.textContent = book.author
+
+        const bookImage = document.createElement("img")
+        bookImage.src = book.imageUrl;
+
+        const bookContainer = document.createElement("li");
+        bookContainer.append(bookTitle, bookAuthor, bookImage)
+        
+        bookList.append(bookContainer)
+    }
+}
+displayBooks(bookStore)
